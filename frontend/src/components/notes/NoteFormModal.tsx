@@ -9,7 +9,7 @@ import { useNotes } from '@/hooks/useNotes'
 import { useUpdateNote } from '@/hooks/useUpdateNote'
 import { cn } from '@/lib/cn'
 
-// Client-side limits: the starter backend accepts any strings.
+// Mirror the server's validation in backend/main.py, so most errors show before a request.
 const TITLE_MAX = 200
 const CONTENT_MAX = 10_000
 const CONTENT_COUNTER_FROM = CONTENT_MAX * 0.9

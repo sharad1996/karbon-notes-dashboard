@@ -1,7 +1,5 @@
 # Notes Dashboard
 
-[![CI](https://github.com/sharad1996/karbon-notes-dashboard/actions/workflows/ci.yml/badge.svg)](https://github.com/sharad1996/karbon-notes-dashboard/actions/workflows/ci.yml)
-
 A React + TypeScript notes dashboard backed by a FastAPI API. You can create, edit, delete and search notes, and changes appear in the UI before the server responds, with rollback if a request fails.
 
 ## Quick start
@@ -63,12 +61,10 @@ npm test          # pytest (API), then Vitest (web)
 
 | Command | Checks |
 |---|---|
-| `npm run test:api` | 8 pytest tests: the API contract, plus one test for each starter bug fixed |
+| `npm run test:api` | 8 pytest tests: the API contract, covering starter fixes 1–6 |
 | `npm run test:web` | 18 Vitest + React Testing Library tests, with the API module mocked via `vi.mock` |
 | `npm --prefix frontend run lint` / `typecheck` | ESLint, `tsc` in strict mode |
 | `uv run --project backend ruff check backend` | Python lint |
-
-[CI](.github/workflows/ci.yml) runs all of the above on every push and pull request, plus format checks (ruff, Prettier) and a production build.
 
 ## Features
 
@@ -85,7 +81,6 @@ npm test          # pytest (API), then Vitest (web)
   - Keyboard shortcuts (below).
   - Dark mode that follows the operating system setting.
   - Accessibility: labelled controls, focus returns to the card after the modal closes, toasts are announced to screen readers.
-  - A GitHub Actions CI workflow.
 
 | Shortcut | Action |
 |---|---|
@@ -98,7 +93,7 @@ npm test          # pytest (API), then Vitest (web)
 
 | Area | Choice | Why |
 |---|---|---|
-| Backend | The **FastAPI starter as given, with only its bugs fixed** | Kept to the single `backend/main.py` from the brief. Each fix is commented in the code and has a test (see [API](#api)). |
+| Backend | The **FastAPI starter as given, with only its bugs fixed** | Kept to the single `backend/main.py` from the brief. Each fix is commented in the code, and fixes 1–6 have tests (see [API](#api)). |
 | IDs | **Assigned by the server** from a counter that only increases | The starter let clients choose ids, which allowed duplicates. Ids are never reused after a delete. |
 | Server state | **TanStack Query v5** | Handles caching, loading and error flags, retries and refetching, and provides the hooks needed for optimistic updates. |
 | UI state | **React Context**: `UIContext` (search, page, modal) and `ToastContext` | Server state and UI state are separate problems. Toasts have their own context so that showing or dismissing one doesn't re-render the components that read search. |
