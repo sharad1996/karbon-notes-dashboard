@@ -1,0 +1,16 @@
+{
+  "name": "karbon-notes-dashboard",
+  "private": true,
+  "scripts": {
+    "setup": "uv sync --project backend && npm --prefix frontend ci",
+    "dev": "concurrently -n api,web -c blue,green \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "uv run --project backend uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000",
+    "dev:web": "npm --prefix frontend run dev",
+    "test": "npm run test:api && npm run test:web",
+    "test:api": "uv run --project backend pytest backend",
+    "test:web": "npm --prefix frontend run test -- --run"
+  },
+  "devDependencies": {
+    "concurrently": "^9"
+  }
+}
